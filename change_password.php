@@ -1,12 +1,12 @@
 <?php
 session_start();
+include 'config.php'; // Inclure la connexion à la base de données
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['user_name'] !== 'mael') {
+// Vérifier si l'utilisateur est connecté et s'il a le rôle d'administrateur
+if (!isset($_SESSION['loggedin']) || $_SESSION['user_role'] !== 'admin') {
     header("Location: login.php");
     exit;
 }
-
-include 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_POST['id'];
