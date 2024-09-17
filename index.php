@@ -1,8 +1,10 @@
 <?php
+include 'config.php'; // Inclure la connexion à la base de données
+
 session_start();
 
 // Vérifier si l'utilisateur est connecté et s'il est administrateur
-if (!isset($_SESSION['loggedin']) || $_SESSION['user_name'] !== 'mael') {
+if (!isset($_SESSION['loggedin']) || $_SESSION['user_name'] !== 'admin') {
     header("Location: login.php");
     exit;
 }
@@ -36,7 +38,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['user_name'] !== 'mael') {
         <h1 class="welcome-header">Bienvenue, <?php echo htmlspecialchars($_SESSION['user_name']); ?> !</h1>
         <p>Ceci est la page d'accueil.</p>
 
-        <?php if ($_SESSION['user_name'] === 'mael'): ?>
+        <?php if ($_SESSION['user_name'] === 'admin'): ?>
             <!-- Bouton Admin visible uniquement pour l'administrateur -->
             <a href="admin_panel.php" class="btn btn-primary admin-button">Panel Admin</a>
         <?php endif; ?>
