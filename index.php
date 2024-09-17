@@ -1,9 +1,10 @@
 <?php
+include 'config.php'; // Inclure la connexion à la base de données
+
 session_start();
-include 'config.php';
 
 // Vérifier si l'utilisateur est connecté et s'il est administrateur
-if (!isset($_SESSION['loggedin']) || $_SESSION['user_role'] !== 'admin') {
+if (!isset($_SESSION['loggedin']) || $_SESSION['user_name'] !== 'admin') {
     header("Location: login.php");
     exit;
 }
@@ -23,34 +24,34 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['user_role'] !== 'admin') {
         }
         .container {
             margin-top: 50px;
+            max-width: 800px;
         }
         .welcome-header {
             color: #343a40;
+            text-align: center;
+            margin-bottom: 30px;
         }
-        .admin-button {
+        .welcome-message {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .btn-custom {
             margin-top: 20px;
         }
-        .user-dashboard-button {
-            margin-top: 20px;
+        .btn-custom:hover {
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="welcome-header">Bienvenue, <?php echo htmlspecialchars($_SESSION['user_name']); ?> !</h1>
-        <p>Ceci est la page d'accueil.</p>
+        <p class="welcome-message">Ceci est la page d'accueil.</p>
 
-        <?php if ($_SESSION['user_role'] === 'admin'): ?>
-            <!-- Bouton Admin visible uniquement pour l'administrateur -->
-            <a href="admin_panel.php" class="btn btn-primary admin-button">Panel Admin</a>
-        <?php endif; ?>
+        <a href="admin_panel.php" class="btn btn-primary btn-custom btn-block">Accéder au Panel Admin</a>
 
-        <?php if ($_SESSION['user_role'] === 'user'): ?>
-            <!-- Bouton Dashboard visible uniquement pour les utilisateurs -->
-            <a href="user_dashboard.php" class="btn btn-primary user-dashboard-button">Tableau de bord utilisateur</a>
-        <?php endif; ?>
-
-        <a href="logout.php" class="btn btn-secondary mt-3">Se déconnecter</a>
+        <a href="logout.php" class="btn btn-secondary btn-block mt-3">Se déconnecter</a>
     </div>
 
     <!-- Inclure Bootstrap JS et dépendances -->
