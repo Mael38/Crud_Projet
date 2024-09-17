@@ -1,10 +1,9 @@
 <?php
-include 'config.php'; // Inclure la connexion à la base de données
-
 session_start();
+include 'config.php';
 
 // Vérifier si l'utilisateur est connecté et s'il est administrateur
-if (!isset($_SESSION['loggedin']) || $_SESSION['user_name'] !== 'admin') {
+if (!isset($_SESSION['loggedin']) || $_SESSION['user_role'] !== 'admin') {
     header("Location: login.php");
     exit;
 }
@@ -31,6 +30,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['user_name'] !== 'admin') {
         .admin-button {
             margin-top: 20px;
         }
+        .user-dashboard-button {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -38,9 +40,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['user_name'] !== 'admin') {
         <h1 class="welcome-header">Bienvenue, <?php echo htmlspecialchars($_SESSION['user_name']); ?> !</h1>
         <p>Ceci est la page d'accueil.</p>
 
-        <?php if ($_SESSION['user_name'] === 'admin'): ?>
+        <?php if ($_SESSION['user_role'] === 'admin'): ?>
             <!-- Bouton Admin visible uniquement pour l'administrateur -->
             <a href="admin_panel.php" class="btn btn-primary admin-button">Panel Admin</a>
+        <?php endif; ?>
+
+        <?php if ($_SESSION['user_role'] === 'user'): ?>
+            <!-- Bouton Dashboard visible uniquement pour les utilisateurs -->
+            <a href="user_dashboard.php" class="btn btn-primary user-dashboard-button">Tableau de bord utilisateur</a>
         <?php endif; ?>
 
         <a href="logout.php" class="btn btn-secondary mt-3">Se déconnecter</a>
