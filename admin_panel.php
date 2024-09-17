@@ -19,7 +19,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Admin</title>
-    <!-- Inclure Bootstrap CSS -->
+    <!-- Inclure Bootstrap CSS ici -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -43,7 +43,7 @@ $result = $conn->query($sql);
     <div class="container">
         <h1 class="mb-4">Gestion des utilisateurs</h1>
 
-        <!-- Table des utilisateurs -->
+        <!-- Table des utilisateurs ici -->
         <form action="update_roles.php" method="POST">
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
@@ -74,7 +74,7 @@ $result = $conn->query($sql);
                 </tbody>
             </table>
 
-            <!-- Lien vers la page d'ajout d'utilisateur -->
+            <!-- Lien vers la page d'ajout d'utilisateur ici -->
             <a href="add_user.php" class="btn btn-primary btn-custom">Ajouter un utilisateur</a>
 
             <a href="index.php" class="btn btn-secondary btn-custom">Retour à l'accueil</a>
@@ -83,7 +83,7 @@ $result = $conn->query($sql);
         </form>
     </div>
 
-    <!-- Inclure Bootstrap JS et dépendances -->
+    <!-- Inclure Bootstrap JS et dépendances ici -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
