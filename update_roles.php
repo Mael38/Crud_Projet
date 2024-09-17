@@ -2,6 +2,7 @@
 session_start();
 include 'config.php';
 
+// Vérifier si l'utilisateur est connecté et s'il est administrateur
 if (!isset($_SESSION['loggedin']) || $_SESSION['user_role'] !== 'admin') {
     header("Location: login.php");
     exit;
