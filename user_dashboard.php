@@ -156,7 +156,7 @@ $films = [
 </div>
 
 <footer>
-    <p>Tableau de bord utilisateur &copy; 2024</p>
+    <p>Tableau de bord utilisateur &copy; 2024 - Mael Projet Cesi </p>
 </footer>
 
 </body>
